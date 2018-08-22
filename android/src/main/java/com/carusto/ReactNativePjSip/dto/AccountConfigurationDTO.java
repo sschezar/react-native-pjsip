@@ -13,6 +13,8 @@ public class AccountConfigurationDTO {
 
     public String domain;
 
+    public String uri;
+
     public String password;
 
     public String proxy;
@@ -44,6 +46,10 @@ public class AccountConfigurationDTO {
 
     public String getDomain() {
         return domain;
+    }
+
+    public Strin getUri() {
+        return uri;
     }
 
     public String getPassword() {
@@ -96,6 +102,10 @@ public class AccountConfigurationDTO {
     }
 
     public String getIdUri() {
+        if (uri != null) {
+            return "<"+ uri + ">";
+        }
+
         if (name != null) {
             return name + " <sip:"+ username +"@"+ domain +">";
         }
@@ -120,6 +130,7 @@ public class AccountConfigurationDTO {
         c.name = intent.getStringExtra("name");
         c.username = intent.getStringExtra("username");
         c.domain = intent.getStringExtra("domain");
+        c.uri = intent.getStringExtra("uri");
         c.password = intent.getStringExtra("password");
         c.proxy = intent.getStringExtra("proxy");
         c.transport = intent.getStringExtra("transport");

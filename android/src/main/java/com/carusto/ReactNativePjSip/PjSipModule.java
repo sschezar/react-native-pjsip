@@ -166,4 +166,11 @@ public class PjSipModule extends ReactContextBaseJavaModule {
         Intent intent = PjActions.createChangeCodecSettingsIntent(callbackId, codecSettings, getReactApplicationContext());
         getReactApplicationContext().startService(intent);
     }
+
+    @ReactMethod
+    public void sendMessage(int accountId, String destination, String text, Callback callback) {
+        int callbackId = receiver.register(callback);
+        Intent intent = PjActions.createSendMessageIntent(callbackId, accountId, destination, text, getReactApplicationContext());
+        getReactApplicationContext().startService(intent);
+    }
 }

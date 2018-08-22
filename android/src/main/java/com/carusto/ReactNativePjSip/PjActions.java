@@ -40,6 +40,7 @@ public class PjActions {
     public static final String ACTION_XFER_REPLACES_CALL = "call_xfer_replace";
     public static final String ACTION_REDIRECT_CALL = "call_redirect";
     public static final String ACTION_DTMF_CALL = "call_dtmf";
+    public static final String ACTION_SEND_MESSAGE = "message_send";
 
     public static final String ACTION_SET_SERVICE_CONFIGURATION = "set_service_configuration";
 
@@ -247,6 +248,17 @@ public class PjActions {
         intent.putExtra("callback_id", callbackId);
 
         formatIntent(intent, codecSettings);
+
+        return intent;
+    }
+
+    public static Intent createSendMessageIntent(int callbackId, int accountId, String destination, String text, Context context) {
+        Intent intent = new Intent(context, PjSipService.class);
+        intent.setAction(PjActions.ACTION_SEND_MESSAGE);
+        intent.putExtra("callback_id", callbackId);
+        intent.putExtra("account_id", accountId);
+        intent.putExtra("destination", destination);
+        intent.putExtra("text", text);
 
         return intent;
     }
