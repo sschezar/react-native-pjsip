@@ -29,6 +29,8 @@
 -(void)useSpeaker;
 -(void)useEarpiece;
 
+-(void)sendMessage:(PjSipAccount *)account destination:(NSString*)destination message:(NSString*)text;
+
 -(void)changeOrientation: (NSString*) orientation;
 -(void)changeCodecSettings: (NSDictionary*) codecSettings;
 

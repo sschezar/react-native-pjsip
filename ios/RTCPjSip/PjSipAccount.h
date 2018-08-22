@@ -8,6 +8,7 @@
 @property NSString * name;
 @property NSString * username;
 @property NSString * domain;
+@property NSString * uri;
 @property NSString * password;
 @property NSString * proxy;
 @property NSString * transport;
