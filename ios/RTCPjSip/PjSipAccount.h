@@ -12,7 +12,7 @@
 @property NSString * password;
 @property NSString * proxy;
 @property NSString * transport;
-
+@property NSString * instanceId;
 @property NSString * contactParams;
 @property NSString * contactUriParams;
 

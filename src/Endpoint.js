@@ -533,6 +533,20 @@ export default class Endpoint extends EventEmitter {
         });
     }
 
+    sendMessage(account, destination, text) {
+        destination = this._normalize(account, destination);
+
+        return new Promise(function(resolve, reject) {
+            NativeModules.PjSipModule.sendMessage(account.getId(), destination, text, (successful, data) => {
+                if (successful) {
+                    resolve(data);
+                } else {
+                    reject(data);
+                }
+            })
+        })
+    }
+
     /**
      * @fires Endpoint#connectivity_changed
      * @private
