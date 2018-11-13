@@ -20,7 +20,6 @@
         self.domain = config[@"domain"];
         self.uri = config[@"uri"];
         self.password = config[@"password"];
-        self.instanceId = config[@"instanceId"]
 
         self.proxy = config[@"proxy"] == nil ? [NSNull null] : config[@"proxy"];
         self.transport = config[@"transport"] == nil ? [NSNull null] : config[@"transport"];
@@ -67,8 +66,6 @@
 
             cfg.cred_count = 1;
             cfg.cred_info[0] = cred;
-
-            cfg.rfc5626_instance_id = self.instanceId;
 
             if (![PjSipUtil isEmptyString:self.contactParams]) {
                 cfg.contact_params = pj_str((char *) [self.contactParams UTF8String]);
