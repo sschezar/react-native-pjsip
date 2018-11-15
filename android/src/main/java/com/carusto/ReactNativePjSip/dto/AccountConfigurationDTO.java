@@ -48,7 +48,7 @@ public class AccountConfigurationDTO {
         return domain;
     }
 
-    public Strin getUri() {
+    public String getUri() {
         return uri;
     }
 
