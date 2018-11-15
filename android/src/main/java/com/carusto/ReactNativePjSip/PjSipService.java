@@ -394,11 +394,6 @@ public class PjSipService extends Service {
             case PjActions.ACTION_SET_SERVICE_CONFIGURATION:
                 handleSetServiceConfiguration(intent);
                 break;
-
-            // Message actions
-            case PjActions.ACTION_SEND_MESSAGE:
-                handleMessageSend(intent);
-                break;
         }
     }
 
@@ -892,27 +887,6 @@ public class PjSipService extends Service {
             }
 
             mEmitter.fireIntentHandled(intent);
-        } catch (Exception e) {
-            mEmitter.fireIntentHandled(intent, e);
-        }
-    }
-
-    private void handleMessageSend(Intent intent) {
-        try {
-            int accountId = intent.getIntExtra("account_id", -1);
-            PjSipAccount account = findAccount(accountId);
-            String destination = intent.getStringExtra("destination");
-            String text = intent.getStringExtra("text");
-            SendInstantMessageParam param = new SendInstantMessageParam();
-            SipTxOption txOption = new SipTxOption();
-            Buddy buddy = new Buddy();
-
-            txOption.setTargetUri(destination);
-            txOption.setMsgBody(text);
-
-            param.setTxOption(txOption);
-
-            buddy.sendInstantMessage(param);
         } catch (Exception e) {
             mEmitter.fireIntentHandled(intent, e);
         }
