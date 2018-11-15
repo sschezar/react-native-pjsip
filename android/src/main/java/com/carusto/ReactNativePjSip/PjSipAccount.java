@@ -81,7 +81,7 @@ public class PjSipAccount extends Account {
             registration.put("reason", reason);
 
             json.put("id", getId());
-            json.put("uri", configuration.getUri());
+            json.put("uri", getInfo().getUri());
             json.put("name", configuration.getName());
             json.put("username", configuration.getUsername());
             json.put("domain", configuration.getDomain());
